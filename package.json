@@ -1,0 +1,13 @@
+{
+  "name": "aurora",
+  "version": "1.0.0",
+  "description": "A modern e-commerce REST API built with Node.js, Express, and TypeScript.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Meet Kalani",
+  "license": "MIT",
+  "packageManager": "pnpm@11.12.0"
+}
