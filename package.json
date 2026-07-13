@@ -1,6 +1,7 @@
 {
   "name": "aurora",
   "version": "1.0.0",
+  "type": "module",
   "description": "A modern e-commerce REST API built with Node.js, Express, and TypeScript.",
   "main": "server.js",
   "scripts": {
@@ -9,5 +10,9 @@
   "keywords": [],
   "author": "Meet Kalani",
   "license": "MIT",
-  "packageManager": "pnpm@11.12.0"
+  "packageManager": "pnpm@11.12.0",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
 }
