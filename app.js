@@ -11,4 +11,11 @@ app.use(helmet());
 // for logging the requests
 app.use(morgan("dev"));
 
+app.get("/health", (req, res) => {
+  res.json({
+    success: true,
+    message: "Server is running",
+  });
+});
+
 export default app;
