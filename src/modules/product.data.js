@@ -35,8 +35,8 @@ const findAllProducts = () => {
   return products;
 };
 
-const findById = (id) => {
-  const product = products.find(({ id }) => id === id);
+const findById = (productId) => {
+  const product = products.find(({ id }) => productId === id);
   return product;
 };
 
@@ -45,8 +45,8 @@ const createProduct = (product) => {
   return products;
 };
 
-const findByIdAndUpdate = (id, updatedProduct) => {
-  const product = products.find(({ id }) => id === id);
+const findByIdAndUpdate = (productId, updatedProduct) => {
+  const product = products.find(({ id }) => productId === id);
   product = updatedProduct;
   return products;
 };
