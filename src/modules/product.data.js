@@ -46,8 +46,8 @@ const createProduct = (product) => {
 };
 
 const findByIdAndUpdate = (productId, updatedProduct) => {
-  const product = products.find(({ id }) => productId === id);
-  product = updatedProduct;
+  const productIndex = products.findIndex(({ id }) => productId === id);
+  products[productIndex] = updatedProduct;
   return products;
 };
 
