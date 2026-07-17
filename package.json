@@ -5,6 +5,7 @@
   "description": "A modern e-commerce REST API built with Node.js, Express, and TypeScript.",
   "main": "server.js",
   "scripts": {
+    "dev": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
