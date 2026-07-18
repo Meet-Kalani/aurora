@@ -7,6 +7,7 @@ const app = express();
 
 import { errorHandler } from "./src/middlewares/errorHandler.js";
 import productRoutes from "./src/modules/product.route.js";
+import { notFound } from "./src/middlewares/notFound.js";
 
 app.use(express.json());
 app.use(cors());
@@ -22,6 +23,7 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.use(notFound);
 app.use(errorHandler);
 
 export default app;
