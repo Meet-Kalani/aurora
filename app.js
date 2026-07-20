@@ -6,7 +6,7 @@ import morgan from "morgan";
 const app = express();
 
 import { errorHandler } from "./src/middlewares/errorHandler.js";
-import productRoutes from "./src/modules/product.route.js";
+import productRoutes from "./src/modules/product/product.route.js";
 import { notFound } from "./src/middlewares/notFound.js";
 
 app.use(express.json());
