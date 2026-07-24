@@ -27,32 +27,32 @@ const getProductById = (req, res) => {
 };
 
 const createNewProduct = (req, res) => {
-  const products = createProduct(req.body.product);
+  const product = createProduct(req.body);
 
   res.status(200).json({
     success: true,
     message: "Product added successfully.",
-    data: products,
+    data: product,
   });
 };
 
 const updateProduct = (req, res) => {
-  const products = findByIdAndUpdate(Number(req.params.id), req.body.product);
+  const product = findByIdAndUpdate(Number(req.params.id), req.body);
 
   res.status(200).json({
     success: true,
     message: "Product udpated successfully.",
-    data: products,
+    data: product,
   });
 };
 
 const removeProduct = (req, res) => {
-  const products = findByIdAndRemove(Number(req.params.id));
+  const product = findByIdAndRemove(Number(req.params.id));
 
   res.status(200).json({
     success: true,
     message: "Product removed successfully.",
-    data: products,
+    data: product,
   });
 };
 
