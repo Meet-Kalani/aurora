@@ -17,7 +17,7 @@ const getAllProducts = (req, res) => {
 };
 
 const getProductById = (req, res) => {
-  const product = findById(req.params.id);
+  const product = findById(Number(req.params.id));
 
   res.status(200).json({
     success: true,
@@ -27,32 +27,32 @@ const getProductById = (req, res) => {
 };
 
 const createNewProduct = (req, res) => {
-  const product = createProduct(req.body);
+  const products = createProduct(req.body.product);
 
   res.status(200).json({
     success: true,
     message: "Product added successfully.",
-    data: product,
+    data: products,
   });
 };
 
 const updateProduct = (req, res) => {
-  const product = findByIdAndUpdate(req.params.id, req.body);
+  const products = findByIdAndUpdate(Number(req.params.id), req.body.product);
 
   res.status(200).json({
     success: true,
-    message: "Product updated successfully.",
-    data: product,
+    message: "Product udpated successfully.",
+    data: products,
   });
 };
 
 const removeProduct = (req, res) => {
-  const product = findByIdAndRemove(req.params.id);
+  const products = findByIdAndRemove(Number(req.params.id));
 
   res.status(200).json({
     success: true,
     message: "Product removed successfully.",
-    data: product,
+    data: products,
   });
 };
 

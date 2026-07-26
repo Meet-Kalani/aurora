@@ -1,30 +1,30 @@
 const products = [
   {
-    id: "1",
+    id: 1,
     name: "iPhone 16",
     price: 99999,
     stock: 20,
   },
   {
-    id: "2",
+    id: 2,
     name: "Samsung Galaxy S24",
     price: 79999,
     stock: 35,
   },
   {
-    id: "3",
+    id: 3,
     name: "Google Pixel 9",
     price: 69999,
     stock: 15,
   },
   {
-    id: "4",
+    id: 4,
     name: "OnePlus 12",
     price: 64999,
     stock: 25,
   },
   {
-    id: "5",
+    id: 5,
     name: "Nothing Phone 2",
     price: 44999,
     stock: 40,
