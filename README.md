@@ -98,9 +98,9 @@ aurora/
 │   └── migrations/         # Committed migration history
 ├── generated/prisma/       # Generated client (gitignored)
 └── src/
+    ├── config/             # Shared PrismaClient instance
     ├── middlewares/        # errorHandler, notFound, validate
     ├── modules/            # Feature modules (route, controller, data, schema)
-    ├── prisma/             # Shared PrismaClient instance
     └── utils/              # errors, zod helpers
 ```
 
