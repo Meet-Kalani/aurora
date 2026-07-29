@@ -15,7 +15,7 @@ A modern e-commerce REST API built with Node.js, Express, Prisma, and PostgreSQL
 
 Make sure the target machine has:
 
-- **Node.js** (LTS recommended)
+- **Node.js** `>=20.19`; the latest LTS is recommended
 - **pnpm** — run `corepack enable` to use the pinned version
 - **PostgreSQL** — a running server with a database created for this app
 
