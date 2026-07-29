@@ -7,18 +7,24 @@ import {
   removeProduct,
 } from "./product.controller.js";
 import { validate } from "../middlewares/validate.js";
-import { Product } from "./product.schema.js";
+import { Product, ProductParams } from "./product.schema.js";
+import { validateParams } from "../middlewares/validateParams.js";
 
 const router = Router();
 
 router.get("/", getAllProducts);
 
-router.get("/:id", getProductById);
+router.get("/:id", validateParams(ProductParams), getProductById);
 
 router.post("/", validate(Product), createNewProduct);
 
-router.put("/:id", validate(Product), updateProduct);
+router.put(
+  "/:id",
+  validateParams(ProductParams),
+  validate(Product),
+  updateProduct
+);
 
-router.delete("/:id", removeProduct);
+router.delete("/:id", validateParams(ProductParams), removeProduct);
 
 export default router;
