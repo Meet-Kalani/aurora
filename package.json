@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.js": [
@@ -27,11 +28,14 @@
   "license": "MIT",
   "packageManager": "pnpm@11.15.1",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
     "morgan": "^1.11.0",
+    "pg": "^8.22.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
@@ -42,6 +46,7 @@
     "globals": "^17.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
-    "prettier": "^3.9.5"
+    "prettier": "^3.9.5",
+    "prisma": "^7.9.1"
   }
 }
