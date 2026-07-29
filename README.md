@@ -89,8 +89,7 @@ The generated client is written to `generated/prisma/` (gitignored) and is recre
 
 ```
 aurora/
-├── app.js                  # Express app setup (middleware, routes)
-├── server.js               # Entry point, starts the server
+├── app.js                  # Entry point, starts the server and Express app setup (middleware, routes)
 ├── prisma/
 │   ├── schema/             # Prisma schema, split per model
 │   │   ├── schema.prisma   # generator + datasource

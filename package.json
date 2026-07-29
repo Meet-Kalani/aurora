@@ -2,17 +2,18 @@
   "name": "aurora",
   "version": "1.0.0",
   "type": "module",
-  "description": "A modern e-commerce REST API built with Node.js, Express, and TypeScript.",
-  "main": "server.js",
+  "description": "A modern e-commerce REST API built with Node.js, Express, and Prisma.",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon app.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "db:seed": "prisma db seed"
   },
   "lint-staged": {
     "*.js": [

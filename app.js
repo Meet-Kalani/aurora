@@ -26,4 +26,10 @@ app.get("/health", (_req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`The server is running at ${port}`);
+});
+
 export default app;
