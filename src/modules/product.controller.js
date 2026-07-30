@@ -1,3 +1,4 @@
+import { NotFoundError } from "../utils/errors.js";
 import {
   findAllProducts,
   findById,
@@ -6,8 +7,8 @@ import {
   findByIdAndRemove,
 } from "./product.data.js";
 
-const getAllProducts = (req, res) => {
-  const products = findAllProducts();
+const getAllProducts = async (_req, res) => {
+  const products = await findAllProducts();
 
   res.status(200).json({
     success: true,
@@ -16,8 +17,12 @@ const getAllProducts = (req, res) => {
   });
 };
 
-const getProductById = (req, res) => {
-  const product = findById(req.params.id);
+const getProductById = async (req, res) => {
+  const product = await findById(req.params.id);
+
+  if (!product) {
+    throw new NotFoundError("Product with the given id does not exist.");
+  }
 
   res.status(200).json({
     success: true,
@@ -26,18 +31,18 @@ const getProductById = (req, res) => {
   });
 };
 
-const createNewProduct = (req, res) => {
-  const product = createProduct(req.body);
+const createNewProduct = async (req, res) => {
+  const product = await createProduct(req.body);
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     message: "Product added successfully.",
     data: product,
   });
 };
 
-const updateProduct = (req, res) => {
-  const product = findByIdAndUpdate(req.params.id, req.body);
+const updateProduct = async (req, res) => {
+  const product = await findByIdAndUpdate(req.params.id, req.body);
 
   res.status(200).json({
     success: true,
@@ -46,8 +51,8 @@ const updateProduct = (req, res) => {
   });
 };
 
-const removeProduct = (req, res) => {
-  const product = findByIdAndRemove(req.params.id);
+const removeProduct = async (req, res) => {
+  const product = await findByIdAndRemove(req.params.id);
 
   res.status(200).json({
     success: true,

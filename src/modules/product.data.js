@@ -1,60 +1,61 @@
-const products = [
-  {
-    id: "1",
-    name: "iPhone 16",
-    price: 99999,
-    stock: 20,
-  },
-  {
-    id: "2",
-    name: "Samsung Galaxy S24",
-    price: 79999,
-    stock: 35,
-  },
-  {
-    id: "3",
-    name: "Google Pixel 9",
-    price: 69999,
-    stock: 15,
-  },
-  {
-    id: "4",
-    name: "OnePlus 12",
-    price: 64999,
-    stock: 25,
-  },
-  {
-    id: "5",
-    name: "Nothing Phone 2",
-    price: 44999,
-    stock: 40,
-  },
-];
+import { prisma } from "../config/prisma.js";
+import { NotFoundError } from "../utils/errors.js";
 
-const findAllProducts = () => {
+const handleNotFound = (err) => {
+  if (err.code === "P2025") {
+    throw new NotFoundError("Product with the given id does not exist.");
+  }
+
+  throw err;
+};
+
+const findAllProducts = async () => {
+  const products = await prisma.product.findMany();
+
   return products;
 };
 
-const findById = (productId) => {
-  const product = products.find(({ id }) => productId === id);
+const findById = async (productId) => {
+  const product = await prisma.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+
   return product;
 };
 
-const createProduct = (product) => {
-  products.push(product);
-  return products;
+const createProduct = async (newProduct) => {
+  const product = await prisma.product.create({
+    data: newProduct,
+  });
+
+  return product;
 };
 
-const findByIdAndUpdate = (productId, updatedProduct) => {
-  const productIndex = products.findIndex(({ id }) => productId === id);
-  products[productIndex] = updatedProduct;
-  return products;
+const findByIdAndUpdate = async (productId, updatedProduct) => {
+  const product = await prisma.product
+    .update({
+      where: {
+        id: productId,
+      },
+      data: updatedProduct,
+    })
+    .catch(handleNotFound);
+
+  return product;
 };
 
-const findByIdAndRemove = (productId) => {
-  const productIndex = products.findIndex(({ id }) => productId === id);
-  products.splice(productIndex, 1);
-  return products;
+const findByIdAndRemove = async (productId) => {
+  const product = await prisma.product
+    .delete({
+      where: {
+        id: productId,
+      },
+    })
+    .catch(handleNotFound);
+
+  return product;
 };
 
 export {
