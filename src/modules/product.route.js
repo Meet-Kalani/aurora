@@ -6,9 +6,9 @@ import {
   updateProduct,
   removeProduct,
 } from "./product.controller.js";
-import { validate } from "../middlewares/validate.js";
+import { validate } from "../middlewares/validate.middleware.js";
 import { Product, ProductParams } from "./product.schema.js";
-import { validateParams } from "../middlewares/validateParams.js";
+import { validateParams } from "../middlewares/validateParams.middleware.js";
 
 const router = Router();
 

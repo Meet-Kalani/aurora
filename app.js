@@ -5,9 +5,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 const app = express();
 
-import { errorHandler } from "./src/middlewares/errorHandler.js";
+import { errorHandler } from "./src/middlewares/errorHandler.middleware.js";
 import productRoutes from "./src/modules/product.route.js";
-import { notFound } from "./src/middlewares/notFound.js";
+import { notFound } from "./src/middlewares/notFound.middleware.js";
 
 app.use(express.json());
 app.use(cors());

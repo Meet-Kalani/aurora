@@ -1,3 +1,4 @@
+import { NotFoundError } from "../utils/errors.js";
 import {
   findAllProducts,
   findById,
@@ -6,7 +7,7 @@ import {
   findByIdAndRemove,
 } from "./product.data.js";
 
-const getAllProducts = async (req, res) => {
+const getAllProducts = async (_req, res) => {
   const products = await findAllProducts();
 
   res.status(200).json({
@@ -19,6 +20,10 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
   const product = await findById(req.params.id);
 
+  if (!product) {
+    throw new NotFoundError("Product with the given id does not exist.");
+  }
+
   res.status(200).json({
     success: true,
     message: "Product fetched successfully.",
@@ -29,7 +34,7 @@ const getProductById = async (req, res) => {
 const createNewProduct = async (req, res) => {
   const product = await createProduct(req.body);
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     message: "Product added successfully.",
     data: product,
