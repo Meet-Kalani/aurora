@@ -37,7 +37,10 @@ copy .env.example .env      # Windows (cmd)
 # 4. Apply migrations to create the database tables
 pnpm exec prisma migrate deploy
 
-# 5. Start the dev server
+# 5. (Optional) Seed the database with sample products
+pnpm db:seed
+
+# 6. Start the dev server
 pnpm dev
 ```
 
@@ -75,15 +78,27 @@ pnpm exec prisma studio
 
 The generated client is written to `generated/prisma/` (gitignored) and is recreated by `prisma generate`.
 
+### Seeding
+
+`pnpm db:seed` runs `prisma db seed`, which executes `prisma/seed.js` (wired up through the `migrations.seed` setting in [`prisma.config.ts`](./prisma.config.ts)). It inserts a small set of sample products using `createMany` with `skipDuplicates: true`, so running it more than once is safe and will not create duplicates.
+
+Run it after migrations have been applied:
+
+```bash
+pnpm exec prisma migrate deploy
+pnpm db:seed
+```
+
 ## Scripts
 
-| Script              | Description                      |
-| ------------------- | -------------------------------- |
-| `pnpm dev`          | Start the server with nodemon    |
-| `pnpm lint`         | Run ESLint                       |
-| `pnpm lint:fix`     | Run ESLint with auto-fix         |
-| `pnpm format`       | Format all files with Prettier   |
-| `pnpm format:check` | Check formatting without writing |
+| Script              | Description                            |
+| ------------------- | -------------------------------------- |
+| `pnpm dev`          | Start the server with nodemon          |
+| `pnpm lint`         | Run ESLint                             |
+| `pnpm lint:fix`     | Run ESLint with auto-fix               |
+| `pnpm format`       | Format all files with Prettier         |
+| `pnpm format:check` | Check formatting without writing       |
+| `pnpm db:seed`      | Seed the database with sample products |
 
 ## Project Structure
 
